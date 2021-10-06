@@ -9,12 +9,18 @@ app.get(root, (req, res) => {
     res.sendStatus(200);
 });
 
+app.post(root + "login", (req, res) => {
+    res.set('Content-Type', 'text/xml')
+    res.send(fs.readFileSync("loginresult.xml"));
+});
+
 app.get(root + "eula", (req, res) => {
     res.sendStatus(200);
 });
 
 app.get(root + "announce", (req, res) => {
-    res.sendStatus(200);
+    res.send("PROJECT LIGHTHOUSE IS A GO!\nalso ezoiar was here")
+    // res.sendStatus(200);
 });
 
 app.get(root + "t_conf", (req, res) => {
@@ -38,6 +44,11 @@ app.get(root + "user/:username", (req, res) => {
 app.get(root + "news", (req, res) => {
     res.set('Content-Type', 'text/xml')
     res.send(fs.readFileSync("news.xml"));
+});
+
+app.get(root + "network_settings.nws", (req, res) => {
+    res.set('Content-Type', 'text/xml')
+    res.send("<imStuff></imStuff>");
 });
 
 const server = app.listen(10060, function () {  
